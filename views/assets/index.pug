@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+  h1 Assets
+  a.btn.btn-primary(href="/assets/new") + Add Asset 
+  form(action="/assets" method="GET")
+    select(name="categoryId")
+      option(value="") All Categories
+      each category in categories
+        option(value=category.id selected=(query.categoryId == category.id))= category.name
+    input(type="text" name="search" placeholder="Search make or model" value=query.search)
+    button(type="submit") Filter
+  table#assetsTable.table 
+    thead
+      tr
+        th assetTag
+        th serialNumber    
+        th make
+        th model
+        th purchaseDate
+        th vendor
+        th warrantyExpiryDate
+        th categoryId
+        th branchId
+        th Purchase Price
+        th status
+        th Actions
+    tbody
+        each asset in assets
+            tr
+              td= asset.assetTag
+              td= asset.serialNumber
+              td= asset.make
+              td= asset.model
+              td= asset.purchaseDate
+              td= asset.vendor
+              td= asset.warrantyExpiryDate
+              td= asset.category.name
+              td= asset.branch.name
+              td= asset.purchasePrice
+              td= asset.status
+              td
+                a(href="/assets/" + asset.id + "/view") View
+                a(href="/assets/" + asset.id + "/edit") Edit

@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  h1 Edit Asset
+  form(action="/assets/" + asset.id method="POST")
+    input(type="hidden" name="_method" value="PUT")
+    div.mb-3
+      label Asset Tag
+      input.form-control(type="text" name="assetTag" value=asset.assetTag required)
+    div.mb-3
+      label Serial Number
+      input.form-control(type="text" name="serialNumber" value=asset.serialNumber required)
+    div.mb-3
+      label Make
+      input.form-control(type="text" name="make" value=asset.make required)
+    div.mb-3
+      label Model
+      input.form-control(type="text" name="model" value=asset.model required)
+    div.mb-3
+      label Purchase Date
+      input.form-control(type="date" name="purchaseDate" value=asset.purchaseDate required)
+    div.mb-3
+      label Vendor
+      input.form-control(type="text" name="vendor" value=asset.vendor required)
+    div.mb-3
+      label Warranty Expiry Date
+      input.form-control(type="date" name="warrantyExpiryDate" value=asset.warrantyExpiryDate)
+    div.mb-3
+      label Category
+      select.form-control(name="categoryId" required)
+        each category in categories
+          option(value=category.id selected=(asset.categoryId === category.id))= category.name
+    div.mb-3
+      label Branch
+      select.form-control(name="branchId" required)
+        each branch in branches
+          option(value=branch.id selected=(asset.branchId === branch.id))= branch.name
+    div.mb-3
+      label Purchase Price
+      input.form-control(type="number" step="0.01" name="purchasePrice" value=asset.purchasePrice)
+    button.btn.btn-primary(type="submit") Save

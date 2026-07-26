@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1 Edit Category
+  form(action="/categories/" + assetCategory.id method="POST")
+    input(type="hidden" name="_method" value="PUT")
+    div.mb-3
+      label Name
+      input.form-control(type="text" name="name" value=assetCategory.name required)
+    div.mb-3
+      label Description
+      textarea.form-control(name="description" required)= assetCategory.description
+    div.mb-3
+      label Is Active
+      select.form-control(name="isActive" required)
+        option(value="true" selected=(assetCategory.isActive === true)) Yes
+        option(value="false" selected=(assetCategory.isActive === false)) No
+    button.btn.btn-primary(type="submit") Save

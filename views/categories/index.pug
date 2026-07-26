@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1 Categories
+  a.btn.btn-primary(href="/categories/new") + Add Category
+  table#categoriesTable.table 
+    thead
+      tr
+        th Name
+        th Description
+        th Active 
+    tbody
+        each category in categories
+            tr
+              td= category.name
+              td= category.description
+              td= category.isActive ? 'Yes' : 'No'
+              td
+                a(href="/categories/" + category.id + "/edit") Edit

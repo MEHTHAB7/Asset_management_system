@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  h1 Stock View
+  table.table
+    thead
+      tr
+        th Branch
+        th Asset Count
+        th Total Value
+    tbody
+      - var grandTotal = 0
+      each item in stock
+        - grandTotal += parseFloat(item.totalValue)
+        tr
+          td= item['branch.name']
+          td= item.assetCount
+          td= item.totalValue
+    tfoot
+      tr
+        th Total
+        th
+        th= grandTotal

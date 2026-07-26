@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  h1= 'History: ' + asset.assetTag
+  p Category: #{asset.category.name} | Branch: #{asset.branch.name} | Status: #{asset.status}
+
+  table.table
+    thead
+      tr
+        th Date
+        th Type
+        th Employee
+        th Reason
+        th Condition
+        th Remarks
+    tbody
+      each txn in history
+        tr
+          td= txn.transactionDate
+          td= txn.transactionType
+          td= txn.employee ? txn.employee.firstName + ' ' + txn.employee.lastName : '-'
+          td= txn.returnReason || '-'
+          td= txn.condition || '-'
+          td= txn.remarks || '-'

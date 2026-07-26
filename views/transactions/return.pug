@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  h1 Return
+  form(action="/transactions/return" method="POST")
+
+    div.mb-3
+      label AssetId
+      select.form-control(name="assetId" required)
+        each asset in assets
+          option(value=asset.id)= asset.assetTag + ' (with ' + asset.currentHolder.firstName + ' ' + asset.currentHolder.lastName + ')'
+    div.mb-3
+      label ReturnReason
+      select.form-control(name="returnReason" required)
+        option(value="UPGRADE") Upgrade
+        option(value="REPAIR") Repair
+        option(value="RESIGNATION") Resignation
+        option(value="DAMAGED") Damaged
+        option(value="OTHER") Other
+    div.mb-3
+      label Condition
+      input.form-control(type="text" name="condition")
+    div.mb-3
+      label Remarks
+      textarea.form-control(name="remarks")    
+    button.btn.btn-primary(type="submit") Save
+  

@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1 Add Category
+  form(action="/categories" method="POST")
+    div.mb-3
+      label Name
+      input.form-control(type="text" name="name" required)
+    div.mb-3
+      label Description
+      textarea.form-control(name="description" required)
+    div.mb-3
+      label Is Active
+      select.form-control(name="isActive" required)
+        option(value="true") Yes
+        option(value="false") No
+    button.btn.btn-primary(type="submit") Save
+       
+      

@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  h1 Add Asset
+  form(action="/assets" method="POST")
+    div.mb-3
+      label Asset Tag
+      input.form-control(type="text" name="assetTag" required)
+    div.mb-3
+      label Serial Number
+      input.form-control(type="text" name="serialNumber" required)
+    div.mb-3
+      label Make
+      input.form-control(type="text" name="make" required)
+    div.mb-3
+      label Model
+      input.form-control(type="text" name="model" required)
+    div.mb-3
+      label Purchase Date
+      input.form-control(type="date" name="purchaseDate" required)
+    div.mb-3
+      label Vendor
+      input.form-control(type="text" name="vendor" required)
+    div.mb-3
+      label Warranty Expiry Date
+      input.form-control(type="date" name="warrantyExpiryDate")
+    div.mb-3
+      label Category
+      select.form-control(name="categoryId" required)
+        each category in categories
+          option(value=category.id)= category.name
+    div.mb-3
+      label Branch
+      select.form-control(name="branchId" required)
+        each branch in branches
+          option(value=branch.id)= branch.name
+    div.mb-3
+      label Purchase Price
+      input.form-control(type="number" step="0.01" name="purchasePrice")
+    button.btn.btn-primary(type="submit") Save
+  

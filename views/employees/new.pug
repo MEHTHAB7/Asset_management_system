@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+  h1 Add Employee
+  form(action="/employees" method="POST")
+    div.mb-3
+      label Employee Code
+      input.form-control(type="text" name="employeeCode" required)
+    div.mb-3
+      label Branch
+      select.form-control(name="branchId" required)
+        each branch in branches
+          option(value=branch.id)= branch.name
+    div.mb-3
+      label First Name
+      input.form-control(type="text" name="firstName" required)
+    div.mb-3
+      label Last Name
+      input.form-control(type="text" name="lastName" required)
+    div.mb-3
+      label Email
+      input.form-control(type="email" name="email" required)
+    div.mb-3
+      label Phone
+      input.form-control(type="tel" name="phone" required)
+    div.mb-3
+      label Department
+      input.form-control(type="text" name="department" required)
+    div.mb-3
+      label Date of Joining
+      input.form-control(type="date" name="dateOfJoining"  required)
+    div.mb-3
+      label Designation
+      input.form-control(type="text" name="designation"  required)
+    div.mb-3
+      label Is Active
+      select.form-control(name="isActive"  required)
+        option(value="true") Yes
+        option(value="false") No
+    button.btn.btn-primary(type="submit") Save

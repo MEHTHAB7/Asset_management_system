@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  h1 Edit Employee
+  form(action="/employees/" + employee.id method="POST")
+    input(type="hidden" name="_method" value="PUT")
+    div.mb-3
+      label Employee Code
+      input.form-control(type="text" name="employeeCode" value=employee.employeeCode required)
+    div.mb-3
+      label Branch
+      select.form-control(name="branchId" required)
+        each branch in branches
+          option(value=branch.id selected=(branch.id == employee.branchId))= branch.name
+    div.mb-3
+      label First Name
+      input.form-control(type="text" name="firstName" value=employee.firstName required)
+    div.mb-3
+      label Last Name
+      input.form-control(type="text" name="lastName" value=employee.lastName required)
+    div.mb-3
+      label Email
+      input.form-control(type="email" name="email" value=employee.email required)
+    div.mb-3
+      label Phone
+      input.form-control(type="tel" name="phone" value=employee.phone required)
+    div.mb-3
+      label Department
+      input.form-control(type="text" name="department" value=employee.department required)
+    div.mb-3
+      label Date of Joining
+      input.form-control(type="date" name="dateOfJoining" value=employee.dateOfJoining required)
+    div.mb-3
+      label Designation
+      input.form-control(type="text" name="designation" value=employee.designation required)
+    div.mb-3
+      label Is Active
+      select.form-control(name="isActive" required)
+        option(value="true" selected=(employee.isActive === true)) Yes
+        option(value="false" selected=(employee.isActive === false)) No
+    button.btn.btn-primary(type="submit") Save

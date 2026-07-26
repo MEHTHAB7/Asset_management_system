@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h1 SCrap
+  form(action="/transactions/scrap" method="POST")
+
+    div.mb-3
+      label Asset
+      select.form-control(name="assetId" required)
+        each asset in assets
+          option(value=asset.id)= asset.assetTag + ' - ' + asset.serialNumber
+    div.mb-3
+      label scrapReason
+      textarea.form-control(name="scrapReason")
+
+    button.btn.btn-primary(type="submit") Save

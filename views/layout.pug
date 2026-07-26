@@ -1,0 +1,34 @@
+doctype html 
+html
+  head
+    title Asset Management System
+    link( rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" )
+    link(rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css")
+    script(src="https://code.jquery.com/jquery-3.7.1.min.js")
+    script(src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
+    link(rel="stylesheet" href="/css/style.css")
+  body
+    nav
+      ul.nav.nav-pills
+        li.nav-item
+          a.nav-link(href="/assets") Home
+        li.nav-item
+          a.nav-link(href="/employees") Employees
+        li.nav-item
+          a.nav-link(href="/assets") Assets
+        li.nav-item
+          a.nav-link(href="/categories") Categories
+        li.nav-item
+          a.nav-link(href="/stock") Stock View
+        li.nav-item
+          a.nav-link(href="/transactions/issue") Issue
+        li.nav-item
+          a.nav-link(href="/transactions/return") Return
+        li.nav-item
+          a.nav-link(href="/transactions/scrap") Scrap
+    .container
+      block content
+    script.
+      $(document).ready(function() {
+        $('table.table').DataTable();
+      });

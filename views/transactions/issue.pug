@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1 issue
+  form(action="/transactions/issue" method="POST")
+
+    div.mb-3
+      label Asset
+      select.form-control(name="assetId" required)
+        each asset in assets
+          option(value=asset.id)= asset.assetTag + ' - ' + asset.serialNumber
+    div.mb-3
+      label Employee
+      select.form-control(name="employeeId" required)
+        each employee in employees
+          option(value=employee.id)= employee.firstName + ' ' + employee.lastName
+
+    button.btn.btn-primary(type="submit") Save
+  
